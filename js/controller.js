@@ -84,5 +84,5 @@ app.run(function($httpBackend) {
         };
 
     }
-angular.bootstrap(document.querySelector('[ng-app="playground"]'),['app2']);
+
 angular.module('myApp', ['app','playground']);
