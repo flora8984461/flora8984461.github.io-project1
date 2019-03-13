@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Angular Gauge Playground</title>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width-device-width,initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.min.js"></script>-->
+
+    <!--for icon-->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<!--bootstrap for Chinese CDN
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css"> -->
+
+    <link href="angular-xeditable/css/xeditable.css" rel="stylesheet">
+<!--    <script src="js/otherangularjs/angular-material.css"></script>-->
+    <link href="css/main.css" rel="stylesheet">
+    <script src="js/angular.min.js"></script>
+    <script src="js/otherangularjs/angular-animate.min.js"></script>
+    <script src="js/otherangularjs/angular-material.min.js"></script>
+    <script src="js/otherangularjs/angular-aria.min.js"></script>
+    <script src="js/otherangularjs/angular-sanitize.min.js"></script>
+
+
+    <script src="angular-xeditable/js/xeditable.js"></script>
+
+    <script src="js/angular-mocks.js"></script>
+
+    <script src="js/angularjs-gauge.js"></script>
+
+    <script src="js/controller.js"></script>
+
+
+</head>
+
+<body ng-app="myApp">
+
+<!--navbar-->
+
+<nav class="navbar navbar-default navbar-light bg-light" style="width:100%;">
+
+    <a class="navbar-brand" href="#" style="font-weight:bold;"><img src="http://blog.venturx.ca/wp-content/uploads/2017/12/p5venturx_logo-Recovered-1-e1512589884154.png" width="200" height="50" class="d-inline-block align-top" alt=""></a>
+
+<span class="navbar-text">
+    <span style="font-weight: bold;">Hello,16@test.com</span>
+    <a class="nav-link" href="#" style="color:grey; display:inline-block;padding-right:0;">
+        Log Out
+    </a>
+    </span>
+
+</nav>
+
+
+<div style="height:30px;"></div>
+
+<!--profile and editor-->
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-2">
+        <img src="img/profile.png" class="rounded mx-auto d-block" alt="...">
+    </div>
+    <div class="col-6" style="padding-left:0;">
+        <div style="border:2px solid black;height:230px;margin-right:170px;">
+            <div ng-app="app" ng-controller="Ctrl">
+                <form editable-form name="editableForm" onaftersave="saveUser()">
+                    <div>
+                        <!-- editable username (text with validation) -->
+                        <span class="title">Market </span>
+                        <span editable-text="user.name" name="name" onbeforesave="checkName($data)" e-required class="editablearea">{{ user.name || 'empty' }}</span>
+                    </div>
+
+                    <div>
+                        <!-- editable status (select-local) -->
+                        <span class="title">Pain </span>
+                        <span editable-text="user.name222" name="name222" onbeforesave="checkName($data)" e-required class="editablearea"> {{ user.name222 || 'empty' }}</span>
+                    </div>
+
+                    <div>
+                        <!-- editable group (select-remote) -->
+                        <span class="title">Benifit </span>
+                        <span editable-text="user.name333" name="name333" onbeforesave="checkName($data)" e-required class="editablearea">{{ user.name333 || 'empty' }}</span>
+                    </div>
+                        <div style="float:right;">
+      <!-- button to show form -->
+      <button type="button" class="btn btn-light" style="border: 1px solid dimgrey;" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+        Edit profile
+      </button>
+                            <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+          <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+          Save
+        </button>
+
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+          Cancel
+        </button>
+      </span>
+      </div>
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-2"></div>
+</div>
+
+
+<!--words in middle-->
+
+<div ng-app="playground" ng-controller="MainController as m">
+    <div style="height: 30px;"></div>
+    <section class="playground-section">
+    </section>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+            <span><span style="font-size: 20px;">How is</span> <span style="font-size: 25px;font-weight: bold;">VenturX<span> <i class="fas fa-pencil-alt"></i></span></span> <span style="font-size: 20px;">doing today?</span></span>
+            <span><a href="#" style="color:grey">Check dashboard</a></span>
+        </div>
+    </div>
+
+
+<!--the gauge-->
+
+    <div style="height: 20px;"></div>
+    <div class="row">
+        <div class="col-3"></div>
+
+        <div class = col-2">
+             <div style="padding:10px;margin:5px;">
+            <ng-gauge  type="full" size="170" thick="6" label="Product" append="%"
+                      prepend=" " cap="round" foreground-color="orange"
+                      background-color="rgba(0, 0, 0, 0.1)" value="27" min="0" max="100"
+                      thresholds=""></ng-gauge>
+        </div>
+        </div>
+
+        <div class = col-2">
+            <div style="padding:10px;margin:5px;">
+                <ng-gauge  type="full" size="170" thick="6" label="Runway" append="months"
+                           prepend=" " cap="round" foreground-color="red"
+                           background-color="rgba(0, 0, 0, 0.1)" value="3" min="0" max="12"
+                           thresholds=""></ng-gauge>
+            </div>
+        </div>
+
+        <div class = col-2"  style="padding:10px;margin:5px;">
+            <ng-gauge  type="full" size="170" thick="6" label="Conversation" append=""
+                      prepend="" cap="round" foreground-color="rgba(241, 121, 23, 1)"
+                      background-color="rgba(0, 0, 0, 0.1)" value="24" min="0" max="100"
+                      thresholds=""></ng-gauge>
+        </div>
+    <div class = col-2" style="padding:10px;margin:5px;">
+        <ng-gauge  type="full" size="170" thick="6" label="Engagement" append="%"
+                  prepend=" " cap="round" foreground-color="rgba(24, 241, 52, 1)"
+                  background-color="rgba(0, 0, 0, 0.1)" value="100" min="0" max="100"
+                  thresholds=""></ng-gauge>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+
+</div>
+
+
+<!--last line-->
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-lg-10">
+        <div class="alert alert-warning" role="alert">
+          <span>  <span style="font-weight: bold;">Small Conversation?</span> <span>Learn what you can do to</span> <a href="#" class="alert-link">rise your conversation</a>  </span>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-lg-10">
+        <div class="alert alert-danger" role="alert">
+            <span>  <span style="font-weight: bold;">Low product score? </span><a href="#" class="alert-link">Try this</a>   <span>to get more...</span> </span>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+
+
+<div class="spacer"></div>
+
+<!-- for Chinese CDN
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
