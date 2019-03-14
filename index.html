@@ -83,19 +83,19 @@
                 <form editable-form name="editableForm" onaftersave="saveUser()">
                     <div>
                         <!-- editable username (text with validation) -->
-                        <span class="title">Market </span>
+                        <span class="title">First </span>
                         <span editable-text="user.name" name="name" onbeforesave="checkName($data)" e-required class="editablearea">{{ user.name || 'empty' }}</span>
                     </div>
 
                     <div>
                         <!-- editable status (select-local) -->
-                        <span class="title">Pain </span>
+                        <span class="title">Second </span>
                         <span editable-text="user.name222" name="name222" onbeforesave="checkName($data)" e-required class="editablearea"> {{ user.name222 || 'empty' }}</span>
                     </div>
 
                     <div>
                         <!-- editable group (select-remote) -->
-                        <span class="title">Benifit </span>
+                        <span class="title">Third </span>
                         <span editable-text="user.name333" name="name333" onbeforesave="checkName($data)" e-required class="editablearea">{{ user.name333 || 'empty' }}</span>
                     </div>
                         <div style="float:right;">
