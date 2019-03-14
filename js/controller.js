@@ -9,9 +9,9 @@ app.run(function(editableOptions) {
 app.controller('Ctrl', function($scope, $filter, $http) {
     $scope.user = {
         id: 1,
-        name: 'fill in who are your customers?',
-        name222:'what is the pain statement that you are typing to solve for them?',
-        name333:'what is the benifit that will match that pain statement?'
+        name: 'Lorem ipsum dolor sit amet',
+        name222:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+        name333:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     };
 
     $scope.saveUser = function() {
